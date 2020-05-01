@@ -1,7 +1,8 @@
-package com.deviget.omarhez.toppostsreddit
+package com.deviget.omarhez.toppostsreddit.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.deviget.omarhez.toppostsreddit.R
 
 class MainActivity : AppCompatActivity() {
 
