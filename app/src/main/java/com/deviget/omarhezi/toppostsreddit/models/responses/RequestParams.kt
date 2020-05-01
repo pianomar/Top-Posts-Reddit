@@ -1,4 +1,4 @@
-package com.deviget.omarhez.toppostsreddit.models.responses
+package com.deviget.omarhezi.toppostsreddit.models.responses
 
 data class RequestParams(
     val after: String? = null,

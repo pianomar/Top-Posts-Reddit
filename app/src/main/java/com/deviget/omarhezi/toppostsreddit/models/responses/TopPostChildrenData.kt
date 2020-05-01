@@ -1,6 +1,5 @@
-package com.deviget.omarhez.toppostsreddit.models.responses
+package com.deviget.omarhezi.toppostsreddit.models.responses
 
-import com.deviget.omarhez.toppostsreddit.models.responses.PostImageResponse
 import com.google.gson.annotations.SerializedName
 
 data class TopPostChildrenData(

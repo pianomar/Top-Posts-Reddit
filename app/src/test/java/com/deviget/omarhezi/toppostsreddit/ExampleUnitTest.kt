@@ -1,4 +1,4 @@
-package com.deviget.omarhez.toppostsreddit
+package com.deviget.omarhezi.toppostsreddit
 
 import org.junit.Test
 

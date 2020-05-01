@@ -1,6 +1,6 @@
-package com.deviget.omarhez.toppostsreddit.api
+package com.deviget.omarhezi.toppostsreddit.api
 
-import com.deviget.omarhez.toppostsreddit.models.responses.TopPostsResponse
+import com.deviget.omarhezi.toppostsreddit.models.responses.TopPostsResponse
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
 
