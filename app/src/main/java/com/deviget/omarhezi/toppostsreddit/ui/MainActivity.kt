@@ -11,14 +11,8 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    val viewModel by viewModel<TopPostsViewModel>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        viewModel.topPosts.observe(this, Observer {
-            Toast.makeText(this@MainActivity, "ran", Toast.LENGTH_SHORT).show()
-        })
     }
 }

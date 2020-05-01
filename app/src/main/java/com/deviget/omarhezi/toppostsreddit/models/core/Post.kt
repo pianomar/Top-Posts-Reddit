@@ -1,7 +1,7 @@
 package com.deviget.omarhezi.toppostsreddit.models.core
 
 import com.deviget.omarhezi.toppostsreddit.models.viewdata.PostViewData
-import com.deviget.omarhezi.toppostsreddit.timeStampToRelativeTimeString
+import com.deviget.omarhezi.toppostsreddit.extensions.timeStampToRelativeTimeString
 
 data class Post(
     val id: String? = null,

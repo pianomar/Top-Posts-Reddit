@@ -11,7 +11,6 @@ class TopPostsViewModel(getTopPosts: GetTopPosts) : ViewModel() {
     private var _after: String? = null
 
     val topPosts = getTopPosts().map { result ->
-
         when (result) {
             ResponseResult.Loading -> TopPostsViewState.Loading
             is ResponseResult.Error -> {
@@ -36,7 +35,7 @@ class TopPostsViewModel(getTopPosts: GetTopPosts) : ViewModel() {
 
     sealed class TopPostsViewState {
         object Loading : TopPostsViewState()
-        data class Failed(val message: String? = null, val messageResource: Int? = null) :
+        data class Failed(val message: String? = null, val messageResource: Int = R.string.generic_error_message) :
             TopPostsViewState()
         data class Loaded(val posts: List<PostViewData>) : TopPostsViewState()
     }

@@ -11,4 +11,6 @@
     <!--    Content descriptions-->
     <string name="thumbnail">Thumbnail</string>
     <string name="seenIndicator">Seen Indicator</string>
+    <string name="comments">%d Comments</string>
+    <string name="dismiss_post">Dismiss post</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.deviget.omarhezi.toppostsreddit
+package com.deviget.omarhezi.toppostsreddit.extensions
 
 import java.util.*
 import java.util.concurrent.TimeUnit
