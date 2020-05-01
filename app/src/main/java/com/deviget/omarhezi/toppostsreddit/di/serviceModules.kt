@@ -8,4 +8,4 @@ val serviceModule = module {
     single<RedditApiService> { provideService(get()) }
 }
 
-private inline fun <reified T> provideService(retrofit: Retrofit): T = retrofit.create(T::class.java)
+private fun provideService(retrofit: Retrofit) = retrofit.create(RedditApiService::class.java)
