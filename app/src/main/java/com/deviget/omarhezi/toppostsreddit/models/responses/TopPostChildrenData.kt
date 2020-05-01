@@ -10,5 +10,6 @@ data class TopPostChildrenData(
     val commentsNumber: Int = 0,
     @SerializedName("thumbnail")
     val thumbnailUrl: String = "",
-    val title: String = ""
+    val title: String = "",
+    val author: String = ""
 )

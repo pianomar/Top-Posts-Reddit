@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">TopPostsReddit</string>
+
+    <!--    Error messages-->
     <string name="generic_error_message">Something went wrong, please try again later</string>
     <string name="network_error_message">Something is wrong with your connection, please try again later</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    Content descriptions-->
+    <string name="thumbnail">Thumbnail</string>
+    <string name="seenIndicator">Seen Indicator</string>
 </resources>

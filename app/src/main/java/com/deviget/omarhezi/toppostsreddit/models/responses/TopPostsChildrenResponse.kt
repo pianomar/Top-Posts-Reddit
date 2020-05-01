@@ -16,7 +16,8 @@ data class TopPostsChildrenResponse(
             title = topPostChildrenData.title,
             imageUrl = image?.url.orEmpty(),
             imageHeight = image?.height ?: 0,
-            imageWidth = image?.width ?: 0
+            imageWidth = image?.width ?: 0,
+            author = topPostChildrenData.author
         )
     }
 }

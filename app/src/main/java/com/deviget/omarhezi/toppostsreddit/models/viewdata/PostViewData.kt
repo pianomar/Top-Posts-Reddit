@@ -11,5 +11,6 @@ data class PostViewData(
     val imageHeight: Int = 0,
     val imageUrl: String = "",
     val imageWidth: Int = 0,
-    val seenIndicatorVisibility: Int? = View.VISIBLE
+    val seenIndicatorVisibility: Int? = View.VISIBLE,
+    val author: String
 )

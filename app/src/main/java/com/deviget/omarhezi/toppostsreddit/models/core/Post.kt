@@ -11,7 +11,8 @@ data class Post(
     val title: String = "",
     val imageHeight: Int = 0,
     val imageUrl: String = "",
-    val imageWidth: Int = 0
+    val imageWidth: Int = 0,
+    val author: String = ""
 ) {
     fun toPostViewData() =
         PostViewData(
@@ -22,6 +23,7 @@ data class Post(
             thumbnailUrl = thumbnailUrl,
             imageWidth = imageWidth,
             imageHeight = imageHeight,
-            imageUrl = imageUrl
+            imageUrl = imageUrl,
+            author = author
         )
 }

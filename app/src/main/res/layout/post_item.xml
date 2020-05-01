@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/postContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/thumbnailImageView"
+            android:layout_width="@dimen/thumbnail_size"
+            android:layout_height="@dimen/thumbnail_size"
+            android:layout_marginStart="@dimen/standard_margin"
+            android:layout_marginTop="@dimen/standard_margin"
+            android:background="@color/imagePlaceHolderColor"
+            android:contentDescription="@string/thumbnail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/commentsNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/standard_margin"
+            android:textSize="@dimen/smallTextSize"
+            app:layout_constraintStart_toStartOf="@id/thumbnailImageView"
+            app:layout_constraintTop_toBottomOf="@+id/thumbnailImageView"
+            tools:text="20 comments" />
+
+
+        <TextView
+            android:id="@+id/titleTextView"
+            style="@style/postTextStyle"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/thumbnailImageView"
+            app:layout_constraintTop_toTopOf="@+id/thumbnailImageView"
+            tools:text="This is the title" />
+
+        <TextView
+            android:id="@+id/authorTextView"
+            style="@style/postTextStyle"
+            android:textColor="@color/secondaryTextColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/thumbnailImageView"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+            tools:text="This is the author" />
+
+        <TextView
+            android:id="@+id/createdDateTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/standard_margin"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="@dimen/smallTextSize"
+            app:layout_constraintBottom_toBottomOf="@+id/thumbnailImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/thumbnailImageView"
+            tools:text="This is the author" />
+
+        <ImageView
+            android:id="@+id/seenIndicatorImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/half_standard_margin"
+            android:contentDescription="@string/seenIndicator"
+            android:src="@drawable/seen_indicator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/separatorHeight"
+        android:background="@color/secondaryTextColor"
+        app:layout_constraintTop_toBottomOf="@+id/postContainer"
+        android:layout_marginTop="@dimen/standard_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
