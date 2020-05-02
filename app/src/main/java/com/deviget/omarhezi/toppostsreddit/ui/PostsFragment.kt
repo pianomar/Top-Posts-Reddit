@@ -20,6 +20,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class PostsFragment : Fragment() {
 
+    private var _isRemovingAllItems: Boolean = false
     private val viewModel by viewModel<TopPostsViewModel>()
 
     override fun onCreateView(
@@ -31,7 +32,6 @@ class PostsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = PostsAdapter()
-
         val itemSelectionListener = object : PostsAdapter.OnClickListener {
             override fun dismissPost(postViewData: PostViewData) {
                 adapter.removeItem(postViewData)
@@ -44,14 +44,11 @@ class PostsFragment : Fragment() {
                 )
             }
         }
-
         adapter.itemSelectionListener = itemSelectionListener
 
         setupRecyclerView(adapter)
-        postsRefreshLayout.setOnRefreshListener {
-            viewModel.onRefresh()
-        }
-
+        setupPullToRefresh()
+        setupRemoveAllButton(adapter)
 
         viewModel.topPosts.observe(viewLifecycleOwner, Observer { viewState ->
             postsProgressBar.hide()
@@ -70,6 +67,21 @@ class PostsFragment : Fragment() {
         })
     }
 
+    private fun setupRemoveAllButton(adapter: PostsAdapter) {
+        removeAllBtn.setOnClickListener {
+            _isRemovingAllItems = true
+            val count = adapter.itemCount
+            adapter.clear()
+            adapter.notifyItemRangeRemoved(0, count)
+        }
+    }
+
+    private fun setupPullToRefresh() {
+        postsRefreshLayout.setOnRefreshListener {
+            viewModel.onRefresh()
+        }
+    }
+
     private fun setupRecyclerView(adapter: PostsAdapter) {
         postsRecyclerView.apply {
             this.adapter = adapter
@@ -77,7 +89,7 @@ class PostsFragment : Fragment() {
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
-                    if (!recyclerView.canScrollVertically(1)) viewModel.fetchPosts()
+                    if (!recyclerView.canScrollVertically(1) && !_isRemovingAllItems) viewModel.fetchPosts()
                 }
             })
         }
