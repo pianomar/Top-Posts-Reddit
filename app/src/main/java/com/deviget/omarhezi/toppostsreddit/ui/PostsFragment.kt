@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.deviget.omarhezi.toppostsreddit.R
 import com.deviget.omarhezi.toppostsreddit.extensions.hide
 import com.deviget.omarhezi.toppostsreddit.extensions.show
@@ -42,6 +43,17 @@ class PostsFragment : Fragment() {
                 )
             }
         })
+
+        postsRecyclerView.apply {
+            this.adapter = adapter
+
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    if (!recyclerView.canScrollVertically(1)) viewModel.fetchPosts()
+                }
+            })
+        }
         postsRecyclerView.adapter = adapter
 
         viewModel.topPosts.observe(viewLifecycleOwner, Observer { viewState ->
@@ -52,6 +64,9 @@ class PostsFragment : Fragment() {
                     postsRoot.snackBar(viewState.message ?: getString(viewState.messageResource))
                 is TopPostsViewModel.TopPostsViewState.Loaded -> {
                     adapter.setItems(viewState.posts)
+                }
+                is TopPostsViewModel.TopPostsViewState.LoadedMore -> {
+                    adapter.loadMoreItems(viewState.posts)
                 }
             }
         })

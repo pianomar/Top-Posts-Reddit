@@ -31,6 +31,7 @@ class PostsAdapter(private val itemSelectionListener: OnClickListener? = null) :
 
     fun loadMoreItems(items: List<PostViewData>) {
         _items.addAll(items)
+        notifyDataSetChanged()
     }
 
     interface OnClickListener {
