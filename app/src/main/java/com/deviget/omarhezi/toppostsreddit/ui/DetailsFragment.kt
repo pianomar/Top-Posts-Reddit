@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -37,9 +36,6 @@ class DetailsFragment : Fragment() {
         titleTextView.text = navArgs.postViewData?.title
         authorTextView.text = navArgs.postViewData?.author
 
-//        postImageView.layoutParams.height = navArgs.postViewData?.imageHeight ?: 0
-//        postImageView.layoutParams.width = navArgs.postViewData?.imageWidth ?: 0
-//        postImageView.requestLayout()
         Glide.with(view).load(navArgs.postViewData?.imageUrl).into(postImageView)
     }
 
