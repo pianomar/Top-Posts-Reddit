@@ -90,6 +90,7 @@ class PostsFragment : Fragment() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
                     if (!recyclerView.canScrollVertically(1) && !_isRemovingAllItems) viewModel.fetchPosts()
+                    _isRemovingAllItems = false
                 }
             })
         }
