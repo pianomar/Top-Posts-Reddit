@@ -30,31 +30,23 @@ class PostsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = PostsAdapter(object : PostsAdapter.OnClickListener {
-            override fun dismissPost(postViewData: PostViewData) {
+        val adapter = PostsAdapter()
 
+        val itemSelectionListener = object : PostsAdapter.OnClickListener {
+            override fun dismissPost(postViewData: PostViewData) {
+                adapter.removeItem(postViewData)
             }
 
             override fun selectPost(postViewData: PostViewData) {
                 findNavController().navigate(
-                    PostsFragmentDirections.detailsFragmentAction(
-                        postViewData
-                    )
+                    PostsFragmentDirections.detailsFragmentAction(postViewData)
                 )
             }
-        })
-
-        postsRecyclerView.apply {
-            this.adapter = adapter
-
-            addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    super.onScrolled(recyclerView, dx, dy)
-                    if (!recyclerView.canScrollVertically(1)) viewModel.fetchPosts()
-                }
-            })
         }
-        postsRecyclerView.adapter = adapter
+
+        adapter.itemSelectionListener = itemSelectionListener
+
+        setupRecyclerView(adapter)
 
         viewModel.topPosts.observe(viewLifecycleOwner, Observer { viewState ->
             postsProgressBar.hide()
@@ -70,5 +62,19 @@ class PostsFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun setupRecyclerView(adapter: PostsAdapter) {
+        postsRecyclerView.apply {
+            this.adapter = adapter
+
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    if (!recyclerView.canScrollVertically(1)) viewModel.fetchPosts()
+                }
+            })
+        }
+        postsRecyclerView.adapter = adapter
     }
 }

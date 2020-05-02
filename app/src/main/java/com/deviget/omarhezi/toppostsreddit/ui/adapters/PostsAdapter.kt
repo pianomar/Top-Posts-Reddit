@@ -7,7 +7,8 @@ import com.deviget.omarhezi.toppostsreddit.R
 import com.deviget.omarhezi.toppostsreddit.models.viewdata.PostViewData
 import com.deviget.omarhezi.toppostsreddit.ui.viewholders.PostViewHolder
 
-class PostsAdapter(private val itemSelectionListener: OnClickListener? = null) : RecyclerView.Adapter<PostViewHolder>() {
+class PostsAdapter(var itemSelectionListener: OnClickListener? = null) :
+    RecyclerView.Adapter<PostViewHolder>() {
     private val _items: MutableList<PostViewData> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = PostViewHolder(
@@ -32,6 +33,14 @@ class PostsAdapter(private val itemSelectionListener: OnClickListener? = null) :
     fun loadMoreItems(items: List<PostViewData>) {
         _items.addAll(items)
         notifyDataSetChanged()
+    }
+
+    fun removeItem(postViewData: PostViewData) {
+        val index = _items.indexOf(postViewData)
+        if (index != -1) {
+            _items.remove(postViewData)
+            notifyItemRemoved(index)
+        }
     }
 
     interface OnClickListener {
