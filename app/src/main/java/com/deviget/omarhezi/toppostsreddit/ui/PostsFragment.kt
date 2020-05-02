@@ -38,6 +38,7 @@ class PostsFragment : Fragment() {
             }
 
             override fun selectPost(postViewData: PostViewData) {
+                viewModel.onPostSelected(postViewData)
                 findNavController().navigate(
                     PostsFragmentDirections.detailsFragmentAction(postViewData)
                 )
@@ -47,6 +48,10 @@ class PostsFragment : Fragment() {
         adapter.itemSelectionListener = itemSelectionListener
 
         setupRecyclerView(adapter)
+        postsRefreshLayout.setOnRefreshListener {
+            viewModel.onRefresh()
+        }
+
 
         viewModel.topPosts.observe(viewLifecycleOwner, Observer { viewState ->
             postsProgressBar.hide()
@@ -56,6 +61,7 @@ class PostsFragment : Fragment() {
                     postsRoot.snackBar(viewState.message ?: getString(viewState.messageResource))
                 is TopPostsViewModel.TopPostsViewState.Loaded -> {
                     adapter.setItems(viewState.posts)
+                    postsRefreshLayout.isRefreshing = false
                 }
                 is TopPostsViewModel.TopPostsViewState.LoadedMore -> {
                     adapter.loadMoreItems(viewState.posts)

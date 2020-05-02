@@ -3,6 +3,7 @@ package com.deviget.omarhezi.toppostsreddit.models.responses
 import com.google.gson.annotations.SerializedName
 
 data class TopPostChildrenData(
+    val id: String? = null,
     @SerializedName("created_utc")
     val createdTimeStampUTC: Long = 0,
     val preview: Preview = Preview(listOf()),

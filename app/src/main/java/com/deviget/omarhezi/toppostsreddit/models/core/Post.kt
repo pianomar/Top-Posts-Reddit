@@ -1,7 +1,8 @@
 package com.deviget.omarhezi.toppostsreddit.models.core
 
-import com.deviget.omarhezi.toppostsreddit.models.viewdata.PostViewData
+import android.view.View
 import com.deviget.omarhezi.toppostsreddit.extensions.timeStampToRelativeTimeString
+import com.deviget.omarhezi.toppostsreddit.models.viewdata.PostViewData
 
 data class Post(
     val id: String? = null,
@@ -14,7 +15,7 @@ data class Post(
     val imageWidth: Int = 0,
     val author: String = ""
 ) {
-    fun toPostViewData() =
+    fun toPostViewData(seen: Boolean = false) =
         PostViewData(
             id = id,
             createdDateString = createdTimeStampUTC.timeStampToRelativeTimeString(),
@@ -24,6 +25,7 @@ data class Post(
             imageWidth = imageWidth,
             imageHeight = imageHeight,
             imageUrl = imageUrl,
-            author = author
+            author = author,
+            seenIndicatorVisibility = if (seen) View.GONE else View.VISIBLE
         )
 }

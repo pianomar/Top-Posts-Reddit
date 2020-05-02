@@ -1,5 +1,6 @@
 package com.deviget.omarhezi.toppostsreddit.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
@@ -14,6 +15,7 @@ class TopPostsViewModel(getTopPosts: GetTopPosts) : ViewModel() {
 
     private var _after: String? = null
     private val _fetchPostsTrigger = MediatorLiveData<Boolean>()
+    private val _selectedPosts = HashMap<String?, PostViewData>()
 
     init {
         fetchPosts()
@@ -29,7 +31,7 @@ class TopPostsViewModel(getTopPosts: GetTopPosts) : ViewModel() {
                 }
                 is ResponseResult.Success -> {
                     val retrievedPosts = result.data.posts.orEmpty().map {
-                        it.toPostViewData()
+                        it.toPostViewData(_selectedPosts.containsKey(it.id))
                     }
 
                     if (_after != null) {
@@ -54,6 +56,15 @@ class TopPostsViewModel(getTopPosts: GetTopPosts) : ViewModel() {
 
     fun fetchPosts() {
         _fetchPostsTrigger.value = true
+    }
+
+    fun onRefresh() {
+        _after = null
+        fetchPosts()
+    }
+
+    fun onPostSelected(postViewData: PostViewData) {
+        _selectedPosts[postViewData.id] = postViewData
     }
 
     sealed class TopPostsViewState {

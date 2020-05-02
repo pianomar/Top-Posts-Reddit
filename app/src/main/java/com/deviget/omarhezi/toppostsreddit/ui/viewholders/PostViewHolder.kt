@@ -4,6 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.deviget.omarhezi.toppostsreddit.R
+import com.deviget.omarhezi.toppostsreddit.extensions.hide
 import com.deviget.omarhezi.toppostsreddit.models.viewdata.PostViewData
 import com.deviget.omarhezi.toppostsreddit.ui.adapters.PostsAdapter
 import kotlinx.android.synthetic.main.post_item.view.*
@@ -24,6 +25,7 @@ class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             itemView.context.getString(R.string.comments, viewData.commentsNumber)
 
         itemView.setOnClickListener {
+            viewData.seenIndicatorVisibility = View.GONE
             itemSelectionListener?.selectPost(viewData)
         }
 
