@@ -8,6 +8,7 @@ buildscript {
     ext.retrofit_version = '2.8.1'
     ext.logging_interceptor_version = '4.4.1'
     ext.jetpack_version = '2.2.0'
+    ext.navigation_version = '2.2.2'
 
     repositories {
         google()

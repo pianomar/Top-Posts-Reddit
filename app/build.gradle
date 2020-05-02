@@ -40,6 +40,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    androidExtensions {
+        experimental = true
+    }
 }
 
 dependencies {
@@ -70,8 +74,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$jetpack_version"
 
     // Navigation
-    implementation "androidx.navigation:navigation-fragment:$jetpack_version"
-    implementation "androidx.navigation:navigation-ui:$jetpack_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui:$navigation_version"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

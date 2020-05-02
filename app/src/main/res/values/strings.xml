@@ -13,4 +13,5 @@
     <string name="seenIndicator">Seen Indicator</string>
     <string name="comments">%d Comments</string>
     <string name="dismiss_post">Dismiss post</string>
+    <string name="noPostSelected">Select a post to see its details</string>
 </resources>

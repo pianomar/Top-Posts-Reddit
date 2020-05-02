@@ -8,5 +8,21 @@
     <fragment
         android:id="@+id/posts_fragment"
         android:name="com.deviget.omarhezi.toppostsreddit.ui.PostsFragment"
-        tools:layout="@layout/fragment_posts" />
+        tools:layout="@layout/fragment_posts">
+        <action
+            android:id="@+id/details_fragment_action"
+            app:destination="@+id/details_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/details_fragment"
+        android:name="com.deviget.omarhezi.toppostsreddit.ui.DetailsFragment"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="postViewData"
+            android:defaultValue="@null"
+            app:argType="com.deviget.omarhezi.toppostsreddit.models.viewdata.PostViewData"
+            app:nullable="true" />
+    </fragment>
 </navigation>

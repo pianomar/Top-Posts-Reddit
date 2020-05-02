@@ -8,9 +8,9 @@ data class TopPostsChildrenResponse(
     val topPostChildrenData: TopPostChildrenData = TopPostChildrenData()
 ) {
     fun toPost(): Post {
-        val image = topPostChildrenData.imageResponses.firstOrNull()?.postImageSourceResponse
+        val image = topPostChildrenData.preview.imageResponses.firstOrNull()?.postImageSourceResponse
         return Post(
-            createdTimeStampUTC = topPostChildrenData.createdTimeStampUTC,
+            createdTimeStampUTC = topPostChildrenData.createdTimeStampUTC * 1000,
             commentsNumber = topPostChildrenData.commentsNumber,
             thumbnailUrl = topPostChildrenData.thumbnailUrl,
             title = topPostChildrenData.title,

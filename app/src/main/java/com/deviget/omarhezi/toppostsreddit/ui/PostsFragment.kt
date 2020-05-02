@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.deviget.omarhezi.toppostsreddit.R
 import com.deviget.omarhezi.toppostsreddit.extensions.hide
 import com.deviget.omarhezi.toppostsreddit.extensions.show
@@ -30,11 +31,15 @@ class PostsFragment : Fragment() {
 
         val adapter = PostsAdapter(object : PostsAdapter.OnClickListener {
             override fun dismissPost(postViewData: PostViewData) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
             }
 
             override fun selectPost(postViewData: PostViewData) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                findNavController().navigate(
+                    PostsFragmentDirections.detailsFragmentAction(
+                        postViewData
+                    )
+                )
             }
         })
         postsRecyclerView.adapter = adapter

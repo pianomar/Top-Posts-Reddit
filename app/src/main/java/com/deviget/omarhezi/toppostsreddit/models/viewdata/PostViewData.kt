@@ -1,7 +1,10 @@
 package com.deviget.omarhezi.toppostsreddit.models.viewdata
 
+import android.os.Parcelable
 import android.view.View
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class PostViewData(
     val id: String? = null,
     val createdDateString: String = "",
@@ -13,4 +16,4 @@ data class PostViewData(
     val imageWidth: Int = 0,
     val seenIndicatorVisibility: Int? = View.VISIBLE,
     val author: String
-)
+) : Parcelable
