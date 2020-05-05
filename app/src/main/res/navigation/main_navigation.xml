@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@+id/posts_fragment">
+
+    <fragment
+        android:id="@+id/posts_fragment"
+        android:name="com.deviget.omarhezi.toppostsreddit.ui.PostsFragment"
+        tools:layout="@layout/fragment_posts">
+        <action
+            android:id="@+id/details_fragment_action"
+            app:destination="@+id/details_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/details_fragment"
+        android:name="com.deviget.omarhezi.toppostsreddit.ui.DetailsFragment"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="postViewData"
+            android:defaultValue="@null"
+            app:argType="com.deviget.omarhezi.toppostsreddit.models.viewdata.PostViewData"
+            app:nullable="true" />
+    </fragment>
+</navigation>

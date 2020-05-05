@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="thumbnail_size">40dp</dimen>
+    <dimen name="standard_margin">20dp</dimen>
+    <dimen name="seenIndicatorSize">10dp</dimen>
+    <dimen name="smallTextSize">10sp</dimen>
+    <dimen name="half_standard_margin">10dp</dimen>
+    <dimen name="separatorHeight">1dp</dimen>
+</resources>
